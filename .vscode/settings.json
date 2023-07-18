@@ -1,0 +1,10 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "go-intensivo-jul",
+            "database": "${workspaceFolder:gointensivo-jul}/db.sqlite3"
+        }
+    ]
+}
