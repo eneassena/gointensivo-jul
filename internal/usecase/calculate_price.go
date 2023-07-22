@@ -3,11 +3,12 @@ package usecase
 import "github.com/eneassena/gointensivo-jul/internal/entity"
 
 type OrderInput struct {
-	ID    string
-	Price float64
-	Tax   float64
+	ID    string  `json:"id"`
+	Price float64 `json:"price"`
+	Tax   float64 `json:"tax"`
 }
 
+// {"id":"18", "price":150.15,"tax":2.5}
 func NewOrderInput(id string, price, tax float64) *OrderInput {
 	return &OrderInput{
 		ID:    id,
@@ -23,17 +24,17 @@ type OrderOutPut struct {
 	FinalPrice float64
 }
 
-type calculateFinalPrice struct {
+type CalculateFinalPrice struct {
 	OrderRepository entity.OrderRepositoryInterface
 }
 
-func NewCalculateFinalPrice(orderRepository entity.OrderRepositoryInterface) *calculateFinalPrice {
-	return &calculateFinalPrice{
+func NewCalculateFinalPrice(orderRepository entity.OrderRepositoryInterface) *CalculateFinalPrice {
+	return &CalculateFinalPrice{
 		OrderRepository: orderRepository,
 	}
 }
 
-func (c *calculateFinalPrice) Execute(input OrderInput) (*OrderOutPut, error) {
+func (c *CalculateFinalPrice) Execute(input OrderInput) (*OrderOutPut, error) {
 	order, err := entity.NewOrder(input.ID, input.Price, input.Tax)
 	if err != nil {
 		return nil, err

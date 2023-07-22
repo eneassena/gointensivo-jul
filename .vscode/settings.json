@@ -3,7 +3,7 @@
         {
             "previewLimit": 50,
             "driver": "SQLite",
-            "name": "go-intensivo-jul",
+            "name": "gointensivo-jul",
             "database": "${workspaceFolder:gointensivo-jul}/db.sqlite3"
         }
     ]
